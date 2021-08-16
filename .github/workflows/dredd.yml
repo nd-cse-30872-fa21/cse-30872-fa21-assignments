@@ -1,0 +1,20 @@
+name: Dredd
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest    
+    container: pbui/cse-30872-fa21-assignments
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Linting
+      run:  .scripts/lint.sh ${GITHUB_HEAD_REF}/program.*
+
+    - name: Testing
+      run:  make BRANCH=${GITHUB_HEAD_REF} test

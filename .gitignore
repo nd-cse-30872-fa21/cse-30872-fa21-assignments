@@ -1,0 +1,8 @@
+*~
+*.o
+*.pyc
+*.swp
+*.exe
+*.so
+*.a
+*/program
