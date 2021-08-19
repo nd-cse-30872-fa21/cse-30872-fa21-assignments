@@ -79,7 +79,7 @@ def check_code(assignment, path):
         response = requests.post(DREDD_CODE_URL + assignment, files={'source': open(source)})
         print_results(response.json(), False)
 
-        result = int(response.json().get('status', 1))
+        result = min(result, int(response.json().get('status', 1)))
     return result
 
 # Main Execution
